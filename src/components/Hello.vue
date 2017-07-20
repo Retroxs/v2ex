@@ -1,5 +1,6 @@
 <template>
   <div class="hello">
+    <img src="../assets/logo.png" style="width: 30%;">
     <h1>{{ msg }}</h1>
     <h2>Links</h2>
     <ul>

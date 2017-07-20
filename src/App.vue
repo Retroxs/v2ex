@@ -1,13 +1,14 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png" style="width: 30%;">
     <router-view></router-view>
   </div>
 </template>
 
 <script>
+ import store from './vuex/store'
 export default {
-  name: 'app'
+  name: 'app',
+  store
 }
 </script>
 
