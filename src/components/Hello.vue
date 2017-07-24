@@ -5,11 +5,11 @@
     <h2>Links</h2>
     <ul>
       <li><a href="http://ifuncc.com" target="_blank">主页</a></li>
-      <li><a href="http://ifuncc.com" target="_blank">社区</a></li>
+      <li><router-link :to="{path:'/v2ex'}">社区</router-link></li>
       <li><a href="http://ifuncc.com" target="_blank">聊天室</a></li>
       <li><a href="http://ifuncc.com" target="_blank">Github</a></li>
     </ul>
-    <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=458583093&auto=1&height=66"></iframe>
+    <!--<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=458583093&auto=1&height=66"></iframe>-->
   </div>
 </template>
 
@@ -44,4 +44,7 @@ li {
 a {
   color: #42b983;
 }
+  .top  {
+    height: 300px;
+  }
 </style>

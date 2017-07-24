@@ -5,43 +5,69 @@
  */
 
 import {
-  ADD_ITEM,
-  DELETE_ITEM
+   FETCHTOPICSHOTSUCCESS, FETCHTOPICSINFOSUCCESS,FETCHTOPICSLATESTSUCCESS,FETCHSITESTATESUCCESS
 } from "../mutation-types";
-import hot from '../../service/index'
+import topics from '../../service/topics'
+import site from '../../service/site'
 
 const state = {
-  article:{
-    name: "the new article",
-    Date: "2017-01-01",
-    number: 0,
-    item:[]
-  }
+  topics: [],
+  hot: [],
+  latest:[],
+  state:{}
 };
 
 const getters = {
-  _index_article: state => state.article
+  topics: state => state.topics,
+  hot: state => state.hot,
+  latest: state => state.latest,
+  state: state => state.state
 };
 
 const actions = {
-  _index_addItem({commit,state}){
-    hot.fetch_hot((err,data) =>{
-      if(!err){
-        commit(ADD_ITEM,data)
+  fetchSiteState({commit,state}){
+    site.fetch_siteState((err, data) => {
+      if (!err) {
+        commit(FETCHSITESTATESUCCESS, data)
       }
     })
   },
-  _index_deleteItem({commit,state}){
-    commit(DELETE_ITEM)
+
+  fetchTopicsInfo({commit, state},node_name) {
+    topics.fetch_topicsInfo(node_name,(err, data) => {
+      if (!err) {
+        commit(FETCHTOPICSINFOSUCCESS, data)
+      }
+    })
+  },
+  fetchTopicsHot({commit, state}) {
+    topics.fetch_topicsHot((err, data) => {
+      if (!err) {
+        commit(FETCHTOPICSHOTSUCCESS, data)
+      }
+    })
+  },
+  fetchTopicsLatest({commit, state}) {
+    topics.fetch_topicsLatest((err, data) => {
+      if (!err) {
+        commit(FETCHTOPICSLATESTSUCCESS, data)
+      }
+    })
   }
 };
 
 const mutations = {
-  [ADD_ITEM](state,data){
-    state.article.item = data;
+  [FETCHTOPICSINFOSUCCESS](state, data) {
+    state.topics = (state.topics).concat(data)
   },
-  [DELETE_ITEM](state){
-    state.article.number --;
+  [FETCHTOPICSHOTSUCCESS](state, data) {
+      state.hot = data.slice(0,6)
+  },
+  [FETCHSITESTATESUCCESS](state,data){
+    state.state = data
+  },
+  [FETCHTOPICSLATESTSUCCESS](state,data){
+      state.latest = data.slice(0,6)
   }
 };
 
