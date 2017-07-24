@@ -33,8 +33,8 @@ const actions = {
     })
   },
 
-  fetchTopicsInfo({commit, state},node_name) {
-    topics.fetch_topicsInfo(node_name,(err, data) => {
+  fetchTopicsInfoByNode({commit, state},node_name) {
+    topics.fetch_topicsInfoByNode(node_name,(err, data) => {
       if (!err) {
         commit(FETCHTOPICSINFOSUCCESS, data)
       }

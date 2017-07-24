@@ -18,7 +18,7 @@ export default {
   name: 'hello',
   data () {
     return {
-      msg: 'Welcome to my Blog',
+      msg: 'Welcome To My Blog',
       tip: '(正在建设...)'
     }
   }

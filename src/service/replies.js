@@ -11,8 +11,8 @@ export default {
    * 获取会员信息
    * @param callback
    */
-  fetch_replies: callback => {
-    fetchReplies.get().then(
+  fetch_replies: (id,callback) => {
+    fetchReplies.get({topic_id:id}).then(
       data => callback(null, data.body),
       err => callback(err)
     ).catch(err => callback("网络异常"))

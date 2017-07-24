@@ -7,11 +7,14 @@
             <tbody>
             <tr>
               <td width="110" align="left">
-                <a href="/" title="way to explore">
+                  <router-link :to="{path:`/v2ex`}">
                   <img src="//v2ex.assets.uxengine.net/site/logo@2x.png?m=1346064962"
                        border="0" align="default" alt="V2EX"
                        width="94" height="30">
-                </a>
+                  </router-link>
+              </td>
+              <td width="110" align="left">
+                阅读版
               </td>
               <td width="auto" align="left">
                 <!--<div id="Search">-->
@@ -21,9 +24,9 @@
                 <!--</div>-->
               </td>
               <td width="570" align="right" style="padding-top: 2px;">
-                <a>首页</a>&nbsp;&nbsp;&nbsp;
-                <a>注册</a>&nbsp;&nbsp;&nbsp;
-                <a>登录</a>
+                <!--<a>首页</a>&nbsp;&nbsp;&nbsp;-->
+                <!--<a>注册</a>&nbsp;&nbsp;&nbsp;-->
+                <!--<a>登录</a>-->
               </td>
             </tr>
             </tbody>
@@ -40,7 +43,7 @@
             <div class="cell">
               <strong>V2EX = way to explore</strong>
               <div class="sep5"></div>
-              <span style="font-size: 2px;color: #ccc">V2EX 是一个关于分享和探索的地方</span>
+              <span style="color: #ccc">V2EX 是一个关于分享和探索的地方</span>
             </div>
           </div>
           <div class="sep20"></div>
@@ -60,7 +63,9 @@
                     <td width="10"></td>
                     <td width="auto" valign="middle">
                 <span class="item_hot_topic_title">
+                  <router-link :to="{path:`/v2ex/t/${hot.id}`}">
                {{hot.title}}
+                  </router-link>
                 </span>
                     </td>
                   </tr>
@@ -86,7 +91,9 @@
                     <td width="10"></td>
                     <td width="auto" valign="middle">
                 <span class="item_hot_topic_title">
+                  <router-link :to="{path:`/v2ex/t/${latest.id}`}">
                {{latest.title}}
+                  </router-link>
                 </span>
                     </td>
                   </tr>
@@ -99,9 +106,9 @@
           <div class="box">
             <div class="cell">音乐盒</div>
             <div class="cell" style="padding: 0">
-              <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=270 height=52
-              src="//music.163.com/outchain/player?type=3&id=908139563&auto=1&height=32">
-              </iframe>
+              <!--<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=270 height=52-->
+              <!--src="//music.163.com/outchain/player?type=3&id=908139563&auto=1&height=32">-->
+              <!--</iframe>-->
             </div>
 
           </div>
@@ -126,55 +133,7 @@
         </div>
         <div id="Main">
           <div class="sep20"></div>
-          <div class="box">
-            <div class="inner"
-                 style="background-color: #fff; border-top-left-radius: 3px; border-top-right-radius: 3px;" id="Tabs">
-              <a href="/?tab=tech" class="tab">技术</a>
-              <a href="/?tab=creative" class="tab_current">创意</a>
-              <a href="/?tab=play" class="tab">好玩</a>
-              <a href="/?tab=apple" class="tab">Apple</a>
-              <a href="/?tab=jobs" class="tab">酷工作</a>
-              <a href="/?tab=deals" class="tab">交易</a>
-              <a href="/?tab=city" class="tab">城市</a>
-              <a href="/?tab=qna" class="tab">问与答</a>
-              <a href="/?tab=hot" class="tab">最热</a>
-              <a href="/?tab=all" class="tab">全部</a>
-              <a href="/?tab=r2" class="tab">R2</a>
-            </div>
-            <div class="cell" style="background-color: #f9f9f9; padding: 10px 10px 10px 20px;font-size: 12px;">
-              <!--<div class="fr">-->
-              <!--<a href="/new/create" style="float: right;">发布我的新作品</a>-->
-              <!--</div>-->
-              <a href="/go/create">分享创造</a> &nbsp; &nbsp;
-              <a href="/go/design">设计</a> &nbsp; &nbsp;
-              <a href="/go/ideas">奇思妙想</a>
-            </div>
-            <div class="cell item" v-for="topics in topics">
-              <table cellpadding="0" cellspacing="0" border="0" width="100%">
-                <tbody>
-                <tr>
-                  <td width="48" valign="top" align="center">
-                    <img :src="topics.member.avatar_normal" class="avatar" border="0" align="default">
-                  </td>
-                  <td width="10"></td>
-
-                  <td width="auto" valign="middle">
-                    <span class="item_title">{{topics.title}}</span>
-                    <div class="sep5"></div>
-                    <span class="small fade">
-                      <el-tag type="gray">{{topics.node.title}}</el-tag> &nbsp;•&nbsp;
-                      <strong>{{topics.member.username}}</strong>
-                    </span>
-                  </td>
-
-                  <td width="70" align="right" valign="middle">
-                    <span class="tag">{{topics.replies}}</span>
-                  </td>
-                </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
+          <router-view></router-view>
           <div class="sep20"></div>
           <div class="box">
             节点列表
@@ -184,7 +143,7 @@
       <div class="sep20"></div>
     </div>
     <div id="Button">
-      底部信息
+      根据V2ex提供的接口进行数据更新 @2017-2017
     </div>
   </div>
 </template>
@@ -192,14 +151,8 @@
   import {mapGetters, mapActions, mapMutations} from 'vuex'
 
   export default {
-    data() {
-      return {
-        radio: "技术"
-      }
-    },
     computed: {
       ...mapGetters({
-        topics: 'topics',
         hots: 'hot',
         latests: 'latest',
         state: 'state'
@@ -207,16 +160,12 @@
     },
     methods: {
       ...mapActions({
-        fetchTopicsInfo: 'fetchTopicsInfo',
         fetchTopicsHot: 'fetchTopicsHot',
         fetchTopicsLatest: 'fetchTopicsLatest',
         fetchSiteState: 'fetchSiteState'
       })
     },
     created() {
-      this.fetchTopicsInfo("apple");
-      this.fetchTopicsInfo("programmer");
-      this.fetchTopicsInfo("python");
       this.fetchTopicsHot();
       this.fetchTopicsLatest();
       this.fetchSiteState()
@@ -296,6 +245,10 @@
 
   .sep20 {
     height: 20px;
+  }
+
+  .sep5 {
+    height: 5px;
   }
 
   .cell {
