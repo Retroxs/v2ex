@@ -135,15 +135,15 @@
           <div class="sep20"></div>
           <router-view></router-view>
           <div class="sep20"></div>
-          <div class="box">
-            节点列表
-          </div>
+          <!--<div class="box">-->
+            <!--节点列表-->
+          <!--</div>-->
         </div>
       </div>
       <div class="sep20"></div>
     </div>
     <div id="Button">
-      根据V2ex提供的接口进行数据更新 @2017-2017
+      该页面由V2exAPI数据驱动 @2017-2017
     </div>
   </div>
 </template>
@@ -174,7 +174,7 @@
 </script>
 
 <style>
-  .Top {
+  #Top {
     text-align: center;
     background-color: #fff;
     height: 44px;

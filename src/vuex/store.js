@@ -7,12 +7,14 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 import index from './modules';
 import topic from './modules/topic';
+import member from './modules/member';
 
 Vue.use(Vuex);
 
 export default new Vuex.Store({
   modules:{
     index,
-    topic
+    topic,
+    member
   }
 })

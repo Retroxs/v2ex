@@ -12,6 +12,9 @@
 </script>
 
 <style>
+  html {
+    background-color: #e2e2e2;
+  }
   body {
     margin: 0;
     padding: 0;

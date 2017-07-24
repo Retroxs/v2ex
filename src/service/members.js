@@ -11,8 +11,8 @@ export default {
    * 获取会员信息
    * @param callback
    */
-  fetch_memberInfo: callback => {
-    fetchMemberInfo.get().then(
+  fetch_memberInfo: (name,callback)=> {
+    fetchMemberInfo.get({username:name}).then(
       data => callback(null, data.body),
       err => callback(err)
     ).catch(err => callback("网络异常"))

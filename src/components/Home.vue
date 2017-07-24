@@ -27,7 +27,9 @@
         <tbody>
         <tr>
           <td width="48" valign="top" align="center">
+            <router-link :to="{path:`/v2ex/m/${topics.member.username}`}">
             <img :src="topics.member.avatar_normal" class="avatar" border="0" align="default">
+            </router-link>
           </td>
           <td width="10"></td>
 
@@ -37,7 +39,9 @@
             <div class="sep5"></div>
             <span class="small fade">
               <el-tag type="gray">{{topics.node.title}}</el-tag> &nbsp;•&nbsp;
+              <router-link :to="{path:`/v2ex/m/${topics.member.username}`}">
                       <strong>{{topics.member.username}}</strong>
+              </router-link>
                     </span>
           </td>
 

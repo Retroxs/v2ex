@@ -3,14 +3,18 @@
     <div class="box" style="border-bottom: 0px;">
       <div class="header">
         <div class="fr">
+          <router-link :to="{path:`/v2ex/m/${topic.member.username}`}">
           <img :src="topic.member.avatar_large" class="avatar" border="0" align="default">
+          </router-link>
         </div>
         <router-link :to="{path:`/v2ex`}">V2EX</router-link>
         <span class="chevron">&nbsp;›&nbsp;</span>
         {{topic.node.title}}
         <div class="sep10"></div>
         <h1>{{topic.title}}</h1>
+        <router-link :to="{path:`/v2ex/m/${topic.member.username}`}">
         <small class="gray">{{topic.member.username}}</small>
+        </router-link>
       </div>
       <div class="cell">
         <div class="topic_content" v-html="topic.content_rendered">
@@ -29,19 +33,23 @@
           <tbody>
           <tr>
             <td width="48" valign="top" align="center">
+              <router-link :to="{path:`/v2ex/m/${replay.member.username}`}">
               <img :src="replay.member.avatar_normal" class="avatar"
-              border="0" align="default"></td>
+
+              border="0" align="default">
+              </router-link>
+            </td>
             <td width="10" valign="top"></td>
             <td width="auto" valign="top" align="left">
               <!--<div class="fr"> &nbsp; &nbsp; <span class="no">1</span></div>-->
               <div class="sep3"></div>
+              <router-link :to="{path:`/v2ex/m/${replay.member.username}`}">
               <strong>
                 {{replay.member.username}}
-              </strong>&nbsp; &nbsp;
-              <span class="ago">8 小时 40 分钟前</span>
+              </strong>
+              </router-link>&nbsp; &nbsp;
               <div class="sep5"></div>
-              <div class="reply_content">
-                {{replay.content}}
+              <div class="reply_content" v-html="replay.content_rendered">
               </div>
             </td>
           </tr>
@@ -72,7 +80,7 @@
       }
     },
     created() {
-      this.fetchData()
+      this.fetchData();
     },
     watch : {
       '$route':'fetchData'
